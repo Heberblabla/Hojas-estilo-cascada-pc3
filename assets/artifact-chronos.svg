@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+  <defs>
+    <linearGradient id="chronosGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <radialGradient id="chronosCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fef08a" stop-opacity="1" />
+      <stop offset="45%" stop-color="#38bdf8" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <circle cx="120" cy="120" r="96" stroke="url(#chronosGrad)" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.7" />
+  <circle cx="120" cy="120" r="80" stroke="#38bdf8" stroke-width="2" opacity="0.45" />
+  <polygon points="120,28 144,96 212,120 144,144 120,212 96,144 28,120 96,96" stroke="url(#chronosGrad)" stroke-width="2" fill="rgba(56, 189, 248, 0.08)" />
+  <ellipse cx="120" cy="120" rx="74" ry="28" transform="rotate(-35 120 120)" stroke="#f59e0b" stroke-width="2" />
+  <ellipse cx="120" cy="120" rx="74" ry="28" transform="rotate(35 120 120)" stroke="#38bdf8" stroke-width="2" />
+  <circle cx="120" cy="120" r="42" fill="url(#chronosCore)" />
+  <circle cx="120" cy="120" r="14" fill="#f8fafc" />
+  <circle cx="120" cy="40" r="4" fill="#f59e0b" />
+  <circle cx="120" cy="200" r="4" fill="#38bdf8" />
+  <circle cx="40" cy="120" r="4" fill="#818cf8" />
+  <circle cx="200" cy="120" r="4" fill="#f59e0b" />
+</svg>

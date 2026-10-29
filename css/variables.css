@@ -1,0 +1,79 @@
+/* ==========================================================================
+   CSS MOTION LAB — ARCHIVO DE VARIABLES Y TOKENS DE DISEÑO (variables.css)
+   Arquitectura de tokens reutilizables para color, tipografía, curvas
+   cinéticas, profundidades 3D, sombras e iluminación ambiental.
+   ========================================================================== */
+
+:root {
+  /* --- Paleta Base Oscura de Alto Contraste (Obsidian / Deep Space) --- */
+  --bg-void: #040711;
+  --bg-deep: #070b19;
+  --bg-surface-1: #0d1326;
+  --bg-surface-2: #131c36;
+  --bg-surface-3: #1b274b;
+  --bg-glass: rgba(13, 19, 38, 0.68);
+  --bg-glass-strong: rgba(10, 15, 30, 0.86);
+
+  /* --- Acentos Espectrales --- */
+  --accent-cyan: #38bdf8;
+  --accent-cyan-glow: rgba(56, 189, 248, 0.42);
+  --accent-indigo: #818cf8;
+  --accent-violet: #c084fc;
+  --accent-Violet-glow: rgba(192, 132, 252, 0.4);
+  --accent-rose: #f43f5e;
+  --accent-pink: #ec4899;
+  --accent-emerald: #10b981;
+  --accent-teal: #2dd4bf;
+  --accent-amber: #f59e0b;
+
+  /* --- Texto y Jerarquía Semántica (Contraste WCAG AAA/AA) --- */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-accent: #7dd3fc;
+
+  /* --- Bordes e Iluminación --- */
+  --border-subtle: rgba(148, 163, 184, 0.16);
+  --border-highlight: rgba(56, 189, 248, 0.48);
+  --border-focus: #38bdf8;
+
+  /* --- Gradientes Cinemáticos --- */
+  --grad-primary: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+  --grad-cyber: linear-gradient(135deg, #2dd4bf 0%, #38bdf8 55%, #6366f1 100%);
+  --grad-plasma: linear-gradient(135deg, #f43f5e 0%, #ec4899 50%, #8b5cf6 100%);
+  --grad-solar: linear-gradient(135deg, #fbbf24 0%, #f97316 55%, #ef4444 100%);
+  --grad-surface: linear-gradient(180deg, rgba(30, 41, 59, 0.55) 0%, rgba(15, 23, 42, 0.85) 100%);
+
+  /* --- Sombras Multicapa --- */
+  --shadow-sm: 0 4px 12px -2px rgba(2, 6, 23, 0.6);
+  --shadow-md: 0 12px 32px -6px rgba(2, 6, 23, 0.75), 0 0 1px 1px rgba(148, 163, 184, 0.12);
+  --shadow-lg: 0 24px 60px -12px rgba(2, 6, 23, 0.9), 0 0 24px -4px rgba(56, 189, 248, 0.18);
+  --shadow-neon-cyan: 0 0 24px rgba(56, 189, 248, 0.4), 0 0 60px rgba(56, 189, 248, 0.15);
+  --shadow-neon-rose: 0 0 24px rgba(244, 63, 94, 0.45), 0 0 60px rgba(244, 63, 94, 0.18);
+
+  /* --- Tipografía (Pila Moderna con Fallbacks Locales Seguros) --- */
+  --font-display: 'Space Grotesk', 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+
+  /* --- Curvas de Tiempo Cinéticas (Timing Functions) --- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-Back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-snappy: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --- Radios y Espaciados --- */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 9999px;
+
+  --container-max: 1360px;
+  --header-height: 76px;
+
+  /* --- Coordenadas Interactivas del Cursor (Actualizadas vía JS) --- */
+  --cursor-x: 50vw;
+  --cursor-y: 50vh;
+}

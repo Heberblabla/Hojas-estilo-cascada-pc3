@@ -1,0 +1,675 @@
+/* ==========================================================================
+   PREGUNTA 1 — TRANSICIONES SUAVES E INTERACTIVAS (pregunta1-transiciones.css)
+   Demostración exhaustiva de:
+   - transition (shorthand multipropiedad)
+   - transition-property
+   - transition-duration
+   - transition-delay
+   - transition-timing-function (linear, ease, ease-in, ease-out, ease-in-out, cubic-bezier)
+   - Estados interactivos: :hover, :active, :focus-visible
+   ========================================================================== */
+
+#pregunta-1 {
+  --q1-duration: 1.1s;
+  --q1-delay-base: 0s;
+}
+
+/* --- Panel de Control de Parámetros de Transición (Duración y Retardo) --- */
+.q1-lab-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.35rem 1.75rem;
+  border-radius: var(--radius-md);
+  background: rgba(13, 19, 38, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.q1-control-group {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.q1-control-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.q1-chip-btn {
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: rgba(4, 7, 17, 0.7);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  cursor: pointer;
+  /* REQUISITO P1: transition con duración y función de tiempo */
+  transition-property: background-color, border-color, color, transform, box-shadow;
+  transition-duration: 0.25s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.q1-chip-btn:hover {
+  border-color: var(--accent-cyan);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.q1-chip-btn:active {
+  transform: translateY(1px) scale(0.96);
+}
+
+.q1-chip-btn:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+}
+
+.q1-chip-btn.is-selected {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: var(--accent-cyan);
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.28);
+}
+
+/* ==========================================================================
+   PARTE 1A: CÁMARA COMPARATIVA DE CURVAS DE TIEMPO (transition-timing-function)
+   ========================================================================== */
+
+.q1-timing-chamber {
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(13, 19, 38, 0.92), rgba(7, 11, 25, 0.95));
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  margin-bottom: 2.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.q1-chamber-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.q1-pulse-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--accent-cyan);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(99, 102, 241, 0.25));
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.25s var(--ease-out-Back),
+    box-shadow 0.3s ease;
+}
+
+.q1-pulse-trigger:hover,
+.q1-pulse-trigger:focus-visible {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(99, 102, 241, 0.42));
+  box-shadow: var(--shadow-neon-cyan);
+  transform: translateY(-2px);
+}
+
+.q1-pulse-trigger:active {
+  transform: translateY(1px) scale(0.97);
+}
+
+.q1-pulse-trigger[aria-pressed="true"] {
+  border-color: var(--accent-rose);
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.32), rgba(192, 132, 252, 0.32));
+  box-shadow: var(--shadow-neon-rose);
+}
+
+.q1-tracks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.q1-track-row {
+  display: grid;
+  grid-template-columns: 240px 1fr 90px;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-sm);
+  background: rgba(4, 7, 17, 0.68);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.q1-track-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.q1-track-name {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.q1-track-sub {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.q1-track-lane {
+  position: relative;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  padding: 4px;
+  overflow: hidden;
+}
+
+.q1-track-Shuttle {
+  width: 68px;
+  height: 26px;
+  border-radius: var(--radius-pill);
+  background: var(--grad-primary);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #040711;
+  margin-left: 0%;
+  /* REQUISITO P1: Uso explícito de transition-property, transition-duration y transition-delay */
+  transition-property: margin-left, background, box-shadow, transform;
+  transition-duration: var(--q1-duration, 1.1s);
+  transition-delay: var(--q1-delay-base, 0s);
+}
+
+/* Funciones de tiempo individuales por carril (REQUISITO P1: transition-timing-function) */
+.q1-track-row--linear .q1-track-Shuttle {
+  transition-timing-function: linear;
+}
+
+.q1-track-row--ease .q1-track-Shuttle {
+  transition-timing-function: ease;
+}
+
+.q1-track-row--ease-in .q1-track-Shuttle {
+  transition-timing-function: ease-in;
+}
+
+.q1-track-row--ease-out .q1-track-Shuttle {
+  transition-timing-function: ease-out;
+}
+
+.q1-track-row--ease-in-out .q1-track-Shuttle {
+  transition-timing-function: ease-in-out;
+}
+
+.q1-track-row--bezier .q1-track-Shuttle {
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: calc(var(--q1-delay-base, 0s) + 0.08s);
+}
+
+/* Disparo por :hover en la cámara, :focus-visible o clase activa */
+.q1-timing-chamber:hover .q1-track-Shuttle,
+.q1-timing-chamber:focus-within .q1-track-Shuttle,
+.q1-timing-chamber.is-launched .q1-track-Shuttle {
+  margin-left: calc(100% - 68px);
+  background: var(--grad-plasma);
+  color: #ffffff;
+  box-shadow: 0 0 22px rgba(244, 63, 94, 0.7);
+}
+
+.q1-track-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-align: right;
+  color: var(--accent-cyan);
+}
+
+/* ==========================================================================
+   PARTE 1B: LABORATORIO DE 6 MÓDULOS DE CONTROL INTERACTIVOS
+   Demostración de :hover, :active, :focus-visible, transition-duration,
+   transition-delay y transition-timing-function combinados.
+   ========================================================================== */
+
+.q1-modules-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.q1-module-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.75rem;
+  border-radius: var(--radius-lg);
+  background: rgba(13, 19, 38, 0.82);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  min-height: 295px;
+  /* REQUISITO P1: Shorthand transition multipropiedad con diferentes duraciones y curvas */
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease-out,
+    background-color 0.4s ease,
+    box-shadow 0.45s ease-out;
+}
+
+/* Estado :hover */
+.q1-module-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--accent-cyan);
+  background-color: rgba(19, 28, 54, 0.94);
+  box-shadow:
+    0 20px 45px -12px rgba(2, 6, 23, 0.95),
+    0 0 28px rgba(56, 189, 248, 0.28);
+}
+
+/* Estado :focus-visible (Accesibilidad por Teclado de Alta Precisión) */
+.q1-module-card:focus-visible {
+  outline: 3px solid var(--accent-cyan);
+  outline-offset: 4px;
+  transform: translateY(-6px);
+  border-color: #ffffff;
+  box-shadow:
+    0 0 0 6px rgba(56, 189, 248, 0.25),
+    0 20px 45px -10px rgba(2, 6, 23, 0.95);
+}
+
+/* Estado :active (Respuesta Háptica Visual al Presionar/Mantener Clic) */
+.q1-module-card:active {
+  transform: translateY(2px) scale(0.975);
+  transition-duration: 0.1s;
+  border-color: var(--accent-amber);
+  box-shadow:
+    0 0 35px rgba(245, 158, 11, 0.55),
+    inset 0 0 25px rgba(245, 158, 11, 0.2);
+}
+
+.q1-mod-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.q1-mod-code {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  padding: 0.22rem 0.6rem;
+  border-radius: 6px;
+  background: rgba(56, 189, 248, 0.14);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.q1-module-card:active .q1-mod-code {
+  background: rgba(245, 158, 11, 0.25);
+  color: #fde68a;
+  border-color: var(--accent-amber);
+}
+
+.q1-mod-state-pill {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-pill);
+  background: rgba(4, 7, 17, 0.75);
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.25s ease;
+}
+
+.q1-module-card:hover .q1-mod-state-pill {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.q1-module-card:focus-visible .q1-mod-state-pill {
+  color: #a7f3d0;
+  border-color: var(--accent-emerald);
+}
+
+.q1-module-card:active .q1-mod-state-pill {
+  color: #fde68a;
+  border-color: var(--accent-amber);
+  background: rgba(245, 158, 11, 0.2);
+}
+
+/* --- Escenario Visual Interno de Cada Módulo --- */
+.q1-mod-visualizer {
+  height: 110px;
+  border-radius: var(--radius-md);
+  background: rgba(4, 7, 17, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  margin-bottom: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* MÓDULO 01: Reactor de Ignición con anillos concéntricos y delay */
+.q1-reactor-core {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #38bdf8 0%, #6366f1 70%, transparent 100%);
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.45);
+  transition:
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.5s ease,
+    background 0.4s ease;
+}
+
+.q1-reactor-ring {
+  position: absolute;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  border: 2px dashed rgba(56, 189, 248, 0.45);
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.08s,
+    border-color 0.4s ease 0.08s;
+}
+
+.q1-module-card--reactor:hover .q1-reactor-core,
+.q1-module-card--reactor:focus-visible .q1-reactor-core {
+  transform: scale(1.38);
+  box-shadow: 0 0 36px rgba(56, 189, 248, 0.9);
+}
+
+.q1-module-card--reactor:hover .q1-reactor-ring,
+.q1-module-card--reactor:focus-visible .q1-reactor-ring {
+  transform: rotate(90deg) scale(1.18);
+  border-color: var(--accent-violet);
+}
+
+.q1-module-card--reactor:active .q1-reactor-core {
+  transform: scale(0.82);
+  box-shadow: 0 0 45px var(--accent-amber);
+}
+
+/* MÓDULO 02: Cascada Secuencial con transition-delay escalonado */
+.q1-delay-equalizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+  height: 72px;
+}
+
+.q1-eq-bar {
+  width: 12px;
+  height: 18px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #38bdf8, #6366f1);
+  transition-property: height, background, box-shadow;
+  transition-duration: 0.45s;
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* REQUISITO P1: transition-delay progresivo en cada barra */
+.q1-eq-bar:nth-child(1) { transition-delay: 0.00s; }
+.q1-eq-bar:nth-child(2) { transition-delay: 0.05s; }
+.q1-eq-bar:nth-child(3) { transition-delay: 0.10s; }
+.q1-eq-bar:nth-child(4) { transition-delay: 0.15s; }
+.q1-eq-bar:nth-child(5) { transition-delay: 0.20s; }
+.q1-eq-bar:nth-child(6) { transition-delay: 0.25s; }
+.q1-eq-bar:nth-child(7) { transition-delay: 0.30s; }
+.q1-eq-bar:nth-child(8) { transition-delay: 0.35s; }
+
+.q1-module-card--cascade:hover .q1-eq-bar,
+.q1-module-card--cascade:focus-visible .q1-eq-bar {
+  height: 66px;
+  background: linear-gradient(180deg, #2dd4bf, #38bdf8);
+  box-shadow: 0 0 12px rgba(45, 212, 191, 0.55);
+}
+
+.q1-module-card--cascade:active .q1-eq-bar {
+  height: 32px;
+  background: var(--grad-solar);
+  transition-delay: 0s;
+  transition-duration: 0.12s;
+}
+
+/* MÓDULO 03: Compuerta Láser de Escaneo Biométrico */
+.q1-scanner-shutterLeft,
+.q1-scanner-shutterRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: rgba(15, 23, 42, 0.92);
+  border-color: rgba(56, 189, 248, 0.4);
+  z-index: 2;
+  transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.q1-scanner-shutterLeft {
+  left: 0;
+  border-right: 1px solid rgba(56, 189, 248, 0.45);
+}
+
+.q1-scanner-shutterRight {
+  right: 0;
+  border-left: 1px solid rgba(56, 189, 248, 0.45);
+}
+
+.q1-scanner-secret {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-teal);
+  letter-spacing: 0.12em;
+  opacity: 0.2;
+  transform: scale(0.85);
+  transition:
+    opacity 0.4s ease 0.2s,
+    transform 0.45s var(--ease-out-Back) 0.2s;
+}
+
+.q1-module-card--scanner:hover .q1-scanner-shutterLeft,
+.q1-module-card--scanner:focus-visible .q1-scanner-shutterLeft {
+  transform: translateX(-82%);
+}
+
+.q1-module-card--scanner:hover .q1-scanner-shutterRight,
+.q1-module-card--scanner:focus-visible .q1-scanner-shutterRight {
+  transform: translateX(82%);
+}
+
+.q1-module-card--scanner:hover .q1-scanner-secret,
+.q1-module-card--scanner:focus-visible .q1-scanner-secret {
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+/* MÓDULO 04: Cápsula Morfológica Multipropiedad */
+.q1-morph-pill {
+  width: 72px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #6366f1, #ec4899);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  transition:
+    width 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-radius 0.45s ease,
+    letter-spacing 0.45s ease 0.1s,
+    box-shadow 0.45s ease,
+    background 0.45s ease;
+}
+
+.q1-module-card--morph:hover .q1-morph-pill,
+.q1-module-card--morph:focus-visible .q1-morph-pill {
+  width: 195px;
+  border-radius: 999px;
+  letter-spacing: 0.22em;
+  box-shadow: 0 0 28px rgba(236, 72, 153, 0.65);
+}
+
+.q1-module-card--morph:active .q1-morph-pill {
+  width: 140px;
+  transform: scale(0.94);
+}
+
+/* MÓDULO 05: Sensor de Presión Háptica (:active & :focus-visible protagonista) */
+.q1-pressure-meter {
+  width: 82%;
+  height: 22px;
+  border-radius: var(--radius-pill);
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  padding: 3px;
+  overflow: hidden;
+}
+
+.q1-pressure-fill {
+  width: 24%;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--accent-cyan);
+  transition:
+    width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.q1-module-card--pressure:hover .q1-pressure-fill {
+  width: 65%;
+  background-color: var(--accent-indigo);
+}
+
+.q1-module-card--pressure:focus-visible .q1-pressure-fill {
+  width: 78%;
+  background-color: var(--accent-emerald);
+}
+
+.q1-module-card--pressure:active .q1-pressure-fill {
+  width: 100%;
+  background-color: var(--accent-amber);
+  box-shadow: 0 0 20px var(--accent-amber);
+  transition-duration: 0.12s;
+}
+
+/* MÓDULO 06: Prisma de Desfasaje Cromático (RGB Split con transition-delay) */
+.q1-chroma-stack {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.q1-chroma-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  border: 2px solid;
+  transition-property: transform, opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.q1-chroma-layer--cyan {
+  border-color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.15);
+  transition-delay: 0s;
+}
+
+.q1-chroma-layer--violet {
+  border-color: var(--accent-violet);
+  background: rgba(192, 132, 252, 0.15);
+  transition-delay: 0.08s;
+}
+
+.q1-chroma-layer--rose {
+  border-color: var(--accent-rose);
+  background: rgba(244, 63, 94, 0.15);
+  transition-delay: 0.16s;
+}
+
+.q1-module-card--chroma:hover .q1-chroma-layer--cyan,
+.q1-module-card--chroma:focus-visible .q1-chroma-layer--cyan {
+  transform: translate(-18px, -10px) rotate(-12deg);
+}
+
+.q1-module-card--chroma:hover .q1-chroma-layer--violet,
+.q1-module-card--chroma:focus-visible .q1-chroma-layer--violet {
+  transform: translate(0, -4px) scale(1.1);
+}
+
+.q1-module-card--chroma:hover .q1-chroma-layer--rose,
+.q1-module-card--chroma:focus-visible .q1-chroma-layer--rose {
+  transform: translate(18px, 10px) rotate(12deg);
+}
+
+.q1-mod-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.q1-mod-desc {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.9rem;
+}
+
+.q1-mod-css-spec {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-cyan);
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+@media (max-width: 1024px) {
+  .q1-modules-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .q1-track-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .q1-modules-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+  <defs>
+    <linearGradient id="nebGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#2dd4bf" />
+    </linearGradient>
+  </defs>
+  <circle cx="120" cy="120" r="88" stroke="url(#nebGrad)" stroke-width="2" stroke-dasharray="14 8" />
+  <circle cx="120" cy="120" r="64" stroke="#2dd4bf" stroke-width="1.5" stroke-dasharray="6 6" />
+  <polygon points="120,44 186,82 186,158 120,196 54,158 54,82" stroke="url(#nebGrad)" stroke-width="2" fill="rgba(192, 132, 252, 0.1)" />
+  <polygon points="120,196 186,82 54,82" stroke="#2dd4bf" stroke-width="1.5" opacity="0.6" />
+  <polygon points="120,44 186,158 54,158" stroke="#c084fc" stroke-width="1.5" opacity="0.6" />
+  <circle cx="120" cy="120" r="24" fill="rgba(45, 212, 191, 0.25)" stroke="#f8fafc" stroke-width="2" />
+  <circle cx="120" cy="120" r="9" fill="#2dd4bf" />
+  <circle cx="120" cy="44" r="5" fill="#c084fc" />
+  <circle cx="186" cy="82" r="5" fill="#2dd4bf" />
+  <circle cx="186" cy="158" r="5" fill="#c084fc" />
+  <circle cx="120" cy="196" r="5" fill="#2dd4bf" />
+  <circle cx="54" cy="158" r="5" fill="#c084fc" />
+  <circle cx="54" cy="82" r="5" fill="#2dd4bf" />
+</svg>

@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CSS MOTION LAB — Experiencia interactiva de CSS avanzado: Transiciones, Transformaciones 2D/3D, Universo Animado Autónomo y Compatibilidad Progresiva." />
+  <title>CSS MOTION LAB — Experiencia Interactiva de CSS Avanzado</title>
+
+  <!-- Hojas de estilo modulares con rutas relativas compatibles con archivo local y GitHub Pages -->
+  <link rel="stylesheet" href="./css/variables.css" />
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/pregunta1-transiciones.css" />
+  <link rel="stylesheet" href="./css/pregunta2-transformaciones.css" />
+  <link rel="stylesheet" href="./css/pregunta3-animaciones.css" />
+  <link rel="stylesheet" href="./css/pregunta4-compatibilidad.css" />
+  <link rel="icon" type="image/svg+xml" href="./assets/logo-motion-lab.svg" />
+</head>
+<body>
+  <!-- Enlace de accesibilidad por teclado -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Anunciador accesible para lectores de pantalla -->
+  <div id="a11y-live-announcer" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);"></div>
+
+  <!-- Escenario Ambiental Profundo con Iluminación de Cursor y Rejilla Espacial -->
+  <div class="ambient-stage" aria-hidden="true"></div>
+  <div class="ambient-grid" aria-hidden="true"></div>
+
+  <!-- =====================================================================
+       BARRA SUPERIOR DE COMANDO Y NAVEGACIÓN (COMMAND HUD)
+       ===================================================================== -->
+  <header class="top-nav" role="banner">
+    <button type="button" class="brand-button" data-target="hub" aria-label="Ir al Menú Principal de CSS Motion Lab">
+      <img src="./assets/logo-motion-lab.svg" alt="" class="brand-logo" width="42" height="42" />
+      <span>
+        <span class="brand-title">CSS MOTION LAB</span>
+        <span class="brand-subtitle">EXPERIENCIA INTERACTIVA DE CSS AVANZADO</span>
+      </span>
+    </button>
+
+    <nav class="nav-pills" aria-label="Navegación de experiencias CSS">
+      <button type="button" class="nav-pill is-active" data-target="hub" aria-current="page">
+        <span class="nav-pill-num">00</span>
+        <span>Menú Hub</span>
+      </button>
+      <button type="button" class="nav-pill" data-target="pregunta-1">
+        <span class="nav-pill-num">01</span>
+        <span>Transiciones</span>
+      </button>
+      <button type="button" class="nav-pill" data-target="pregunta-2">
+        <span class="nav-pill-num">02</span>
+        <span>Transformaciones</span>
+      </button>
+      <button type="button" class="nav-pill" data-target="pregunta-3">
+        <span class="nav-pill-num">03</span>
+        <span>Universo Animado</span>
+      </button>
+      <button type="button" class="nav-pill" data-target="pregunta-4">
+        <span class="nav-pill-num">04</span>
+        <span>Compatibilidad</span>
+      </button>
+    </nav>
+
+    <div class="nav-actions">
+      <button type="button" id="toggle-rubric" class="hud-toggle-btn" aria-pressed="false" title="Mostrar indicadores de cumplimiento académico en cada sección">
+        <span class="status-dot"></span>
+        <span>Guía Docente</span>
+      </button>
+      <button type="button" id="toggle-reduced-motion" class="hud-toggle-btn" aria-pressed="false" title="Simular @media (prefers-reduced-motion: reduce)">
+        <span class="status-dot"></span>
+        <span>Reduced Motion</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       CONTENEDOR PRINCIPAL DE VISTAS INTERACTIVAS
+       ===================================================================== -->
+  <main id="main-content" class="app-main">
+
+    <!-- ===================================================================
+         VISTA 00: MENÚ PRINCIPAL ESPECTACULAR (CENTRO DE EXPLORACIÓN)
+         =================================================================== -->
+    <section id="hub" class="view-section is-visible is-active-anim" aria-labelledby="hub-main-title">
+      <div class="rubric-banner">
+        <div class="rubric-banner-title">
+          <span>[INSPECTOR ACADÉMICO ACTIVO] — ARQUITECTURA GENERAL DEL PROYECTO</span>
+        </div>
+        <p style="font-size:0.86rem;color:var(--text-secondary);">
+          Aplicación 100% estática en HTML5, CSS3 puro y Vanilla JS compatible con apertura directa de <code>index.html</code> y GitHub Pages. Selecciona cualquiera de los cuatro portales interactivos o activa esta guía dentro de cada pregunta para revisar las propiedades CSS evaluadas.
+        </p>
+        <div class="rubric-code-tags">
+          <span class="rubric-tag">css/pregunta1-transiciones.css</span>
+          <span class="rubric-tag">css/pregunta2-transformaciones.css</span>
+          <span class="rubric-tag">css/pregunta3-animaciones.css</span>
+          <span class="rubric-tag">css/pregunta4-compatibilidad.css</span>
+          <span class="rubric-tag">compatibilidad.txt</span>
+        </div>
+      </div>
+
+      <!-- Hero Cinemático del Menú Principal -->
+      <div class="hub-hero">
+        <div class="hub-hero-grid">
+          <div>
+            <div class="eyebrow-badge">
+              <span class="eyebrow-pulse"></span>
+              <span>ESTUDIO INTERACTIVO DE ARQUITECTURA CINÉTICA // CSS3 PURO</span>
+            </div>
+            <h1 id="hub-main-title" class="hub-title">
+              <span class="hub-title-gradient">CSS MOTION LAB</span><br />
+              Experiencia Interactiva de CSS Avanzado
+            </h1>
+            <p class="hub-description">
+              Explora un laboratorio digital diseñado para demostrar el potencial expresivo y técnico de CSS moderno: microinteracciones multipropiedad, geometría espacial 3D con perspectiva real, ecosistemas autónomos impulsados por <code>@keyframes</code> y arquitectura de compatibilidad progresiva.
+            </p>
+
+            <div class="hub-telemetry-bar" aria-label="Telemetría del sistema">
+              <div class="telemetry-item">
+                <span class="telemetry-label">MOTOR DE RENDER</span>
+                <span class="telemetry-value">100% CSS3 NATIVO</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="telemetry-label">DETECCIÓN MODERNA</span>
+                <span id="telemetry-engine" class="telemetry-value">@supports 100% OK</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="telemetry-label">VECTOR DE CURSOR</span>
+                <span id="telemetry-coords" class="telemetry-value">X:0680 Y:0420</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="telemetry-label">ACCESIBILIDAD</span>
+                <span class="telemetry-value">WCAG AA + TECLADO</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Escultura Giroscópica 3D en CSS Puro -->
+          <div class="hub-kinetic-core" aria-hidden="true">
+            <div class="kinetic-gyro">
+              <div class="gyro-ring gyro-ring--1"></div>
+              <div class="gyro-ring gyro-ring--2"></div>
+              <div class="gyro-ring gyro-ring--3"></div>
+              <div class="gyro-center-orb"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cabecera de los 4 Portales de Navegación -->
+      <div class="hub-portals-header">
+        <div>
+          <h2 class="hub-section-heading">Centro de Experiencias Interactivas</h2>
+          <p class="hub-section-sub">Selecciona un portal para ingresar a cada módulo experimental sin recargar la página.</p>
+        </div>
+        <span class="footer-kbd">Consejo: Usa Tab + Enter o clic para explorar cada portal</span>
+      </div>
+
+      <!-- Grid de 4 Portales con Previsualizaciones Vivas -->
+      <div class="portals-grid">
+        <!-- PORTAL 01 -->
+        <button type="button" class="portal-card portal-card--01" data-target="pregunta-1">
+          <div class="portal-top">
+            <span class="portal-index">01 — PREGUNTA 1</span>
+            <div class="portal-mini-stage" aria-hidden="true">
+              <div class="mini-bars">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+          <div class="portal-body">
+            <h3 class="portal-title">01 — Transiciones Interactivas</h3>
+            <p class="portal-desc">
+              Cámara comparativa de curvas de aceleración en tiempo real y consola táctica de 6 módulos con microinteracciones de iluminación, presión háptica, cascadas con retardo y foco accesible.
+            </p>
+            <div class="portal-tags">
+              <span class="portal-tag">transition</span>
+              <span class="portal-tag">transition-duration</span>
+              <span class="portal-tag">transition-delay</span>
+              <span class="portal-tag">transition-timing-function</span>
+              <span class="portal-tag">:hover / :active / :focus-visible</span>
+            </div>
+          </div>
+          <div class="portal-footer">
+            <span>INGRESAR AL LABORATORIO DE TRANSICIONES</span>
+            <span class="portal-arrow">→</span>
+          </div>
+        </button>
+
+        <!-- PORTAL 02 -->
+        <button type="button" class="portal-card portal-card--02" data-target="pregunta-2">
+          <div class="portal-top">
+            <span class="portal-index">02 — PREGUNTA 2</span>
+            <div class="portal-mini-stage" aria-hidden="true">
+              <div class="mini-prism"></div>
+            </div>
+          </div>
+          <div class="portal-body">
+            <h3 class="portal-title">02 — Galería de Transformaciones</h3>
+            <p class="portal-desc">
+              Archivo holográfico de reliquias cósmicas 2D y 3D con perspectiva real, inclinación espacial, despliegue por bisagras de origen, corte aerodinámico, volteo de 180° y banco de pruebas en vivo.
+            </p>
+            <div class="portal-tags">
+              <span class="portal-tag">translate() / scale()</span>
+              <span class="portal-tag">rotate() / skew()</span>
+              <span class="portal-tag">perspective</span>
+              <span class="portal-tag">rotateX() / rotateY()</span>
+              <span class="portal-tag">transform-origin</span>
+            </div>
+          </div>
+          <div class="portal-footer">
+            <span>EXPLORAR LA GALERÍA HOLOGRÁFICA 3D</span>
+            <span class="portal-arrow">→</span>
+          </div>
+        </button>
+
+        <!-- PORTAL 03 -->
+        <button type="button" class="portal-card portal-card--03" data-target="pregunta-3">
+          <div class="portal-top">
+            <span class="portal-index">03 — PREGUNTA 3</span>
+            <div class="portal-mini-stage" aria-hidden="true">
+              <div class="mini-orbit">
+                <div class="mini-orbit-core"></div>
+              </div>
+            </div>
+          </div>
+          <div class="portal-body">
+            <h3 class="portal-title">03 — Universo Animado</h3>
+            <p class="portal-desc">
+              Observatorio astral y esfera de Dyson con 14 animaciones CSS autónomas y coordinadas: anillos giroscópicos, planetas con lunas en órbita, cometas, ondas de choque y monolitos levitantes.
+            </p>
+            <div class="portal-tags">
+              <span class="portal-tag">@keyframes</span>
+              <span class="portal-tag">animation-duration</span>
+              <span class="portal-tag">animation-delay</span>
+              <span class="portal-tag">animation-iteration-count</span>
+              <span class="portal-tag">animation-direction</span>
+            </div>
+          </div>
+          <div class="portal-footer">
+            <span>ENTRAR AL OBSERVATORIO AUTÓNOMO</span>
+            <span class="portal-arrow">→</span>
+          </div>
+        </button>
+
+        <!-- PORTAL 04 -->
+        <button type="button" class="portal-card portal-card--04" data-target="pregunta-4">
+          <div class="portal-top">
+            <span class="portal-index">04 — PREGUNTA 4</span>
+            <div class="portal-mini-stage" aria-hidden="true">
+              <div class="mini-glass-stack">
+                <div class="mini-glass-layer mini-glass-layer--back"></div>
+                <div class="mini-glass-layer mini-glass-layer--front"></div>
+              </div>
+            </div>
+          </div>
+          <div class="portal-body">
+            <h3 class="portal-title">04 — CSS Moderno y Compatibilidad</h3>
+            <p class="portal-desc">
+              Dashboard Quantum Glass OS con detección progresiva <code>@supports</code>, valores de reserva en cascada, prefijos de proveedor ordenados, reducción de movimiento y matriz comparativa entre navegadores.
+            </p>
+            <div class="portal-tags">
+              <span class="portal-tag">@supports (base + mejora)</span>
+              <span class="portal-tag">-webkit- + estándar final</span>
+              <span class="portal-tag">prefers-reduced-motion</span>
+              <span class="portal-tag">compatibilidad.txt</span>
+            </div>
+          </div>
+          <div class="portal-footer">
+            <span>ABRIR DASHBOARD DE COMPATIBILIDAD</span>
+            <span class="portal-arrow">→</span>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         VISTA 01: PREGUNTA 1 — TRANSICIONES SUAVES E INTERACTIVAS
+         =================================================================== -->
+    <section id="pregunta-1" class="view-section" aria-labelledby="q1-main-title">
+      <div class="section-topbar">
+        <button type="button" class="back-hub-btn" data-target="hub">
+          <span>← Volver al Menú Principal</span>
+        </button>
+        <div class="section-step-nav">
+          <button type="button" class="step-btn" data-target="pregunta-2">Siguiente: 02 Galería de Transformaciones →</button>
+        </div>
+      </div>
+
+      <div class="rubric-banner">
+        <div class="rubric-banner-title">[RÚBRICA PREGUNTA 1] — ARCHIVO: css/pregunta1-transiciones.css</div>
+        <p style="font-size:0.86rem;color:var(--text-secondary);">
+          Implementa <code>transition</code>, <code>transition-property</code>, <code>transition-duration</code>, <code>transition-delay</code> y <code>transition-timing-function</code> (<code>linear</code>, <code>ease</code>, <code>ease-in</code>, <code>ease-out</code>, <code>ease-in-out</code> y <code>cubic-bezier</code>) junto con respuestas diferenciadas para <code>:hover</code>, <code>:active</code> y <code>:focus-visible</code>.
+        </p>
+      </div>
+
+      <div class="section-hero-header">
+        <div class="eyebrow-badge">
+          <span class="eyebrow-pulse"></span>
+          <span>EXPERIENCIA 01 // PREGUNTA 1 — SÍNTESIS DE TRANSICIONES CSS</span>
+        </div>
+        <h2 id="q1-main-title" class="section-hero-title">01 — Transiciones Interactivas</h2>
+        <p class="section-hero-subtitle">
+          Experimenta cómo la duración, el retardo escalonado y las curvas matemáticas de aceleración transforman la respuesta de una interfaz ante el cursor (<code>:hover</code>), el foco de teclado (<code>:focus-visible</code>) y la presión directa (<code>:active</code>).
+        </p>
+      </div>
+
+      <!-- Barra de Calibración en Tiempo Real -->
+      <div class="q1-lab-controls" role="region" aria-label="Calibración de duración y retardo de transiciones">
+        <div class="q1-control-group">
+          <span class="q1-control-label">transition-duration:</span>
+          <button type="button" class="q1-chip-btn" data-q1-duration="0.45s">0.45s (Rápida)</button>
+          <button type="button" class="q1-chip-btn is-selected" data-q1-duration="1.1s">1.1s (Calibrada)</button>
+          <button type="button" class="q1-chip-btn" data-q1-duration="2.0s">2.0s (Cinemática)</button>
+        </div>
+
+        <div class="q1-control-group">
+          <span class="q1-control-label">transition-delay:</span>
+          <button type="button" class="q1-chip-btn is-selected" data-q1-delay="0s">0s (Inmediato)</button>
+          <button type="button" class="q1-chip-btn" data-q1-delay="0.18s">0.18s (Retardo Corto)</button>
+          <button type="button" class="q1-chip-btn" data-q1-delay="0.4s">0.40s (Retardo Largo)</button>
+        </div>
+
+        <div class="q1-control-group">
+          <span id="q1-live-telemetry" class="q1-mod-code">Interactúa con cualquier módulo para ver su estado</span>
+        </div>
+      </div>
+
+      <!-- Parte 1A: Cámara Comparativa de transition-timing-function -->
+      <div id="q1-timing-chamber" class="q1-timing-chamber">
+        <div class="q1-chamber-header">
+          <div>
+            <h3 style="font-family:var(--font-display);font-size:1.3rem;">Cámara de Curvas de Aceleración (<code>transition-timing-function</code>)</h3>
+            <p style="font-size:0.88rem;color:var(--text-secondary);">
+              Pasa el cursor sobre la cámara o pulsa el botón disparador para comparar las 6 funciones de tiempo simultáneamente.
+            </p>
+          </div>
+          <button type="button" id="q1-launch-btn" class="q1-pulse-trigger" aria-pressed="false">
+            <span>⚡</span>
+            <span class="q1-launch-label">Disparar Pulso Cinético</span>
+          </button>
+        </div>
+
+        <div class="q1-tracks-list">
+          <div class="q1-track-row q1-track-row--linear">
+            <div class="q1-track-meta">
+              <span class="q1-track-name">linear</span>
+              <span class="q1-track-sub">Velocidad constante de principio a fin</span>
+            </div>
+            <div class="q1-track-lane">
+              <div class="q1-track-Shuttle">LINEAR</div>
+            </div>
+            <span class="q1-track-badge">0, 0, 1, 1</span>
+          </div>
+
+          <div class="q1-track-row q1-track-row--ease">
+            <div class="q1-track-meta">
+              <span class="q1-track-name">ease</span>
+              <span class="q1-track-sub">Arranque rápido y frenado suave natural</span>
+            </div>
+            <div class="q1-track-lane">
+              <div class="q1-track-Shuttle">EASE</div>
+            </div>
+            <span class="q1-track-badge">0.25, 0.1, 0.25, 1</span>
+          </div>
+
+          <div class="q1-track-row q1-track-row--ease-in">
+            <div class="q1-track-meta">
+              <span class="q1-track-name">ease-in</span>
+              <span class="q1-track-sub">Aceleración progresiva desde el reposo</span>
+            </div>
+            <div class="q1-track-lane">
+              <div class="q1-track-Shuttle">EASE-IN</div>
+            </div>
+            <span class="q1-track-badge">0.42, 0, 1, 1</span>
+          </div>
+
+          <div class="q1-track-row q1-track-row--ease-out">
+            <div class="q1-track-meta">
+              <span class="q1-track-name">ease-out</span>
+              <span class="q1-track-sub">Impulso inicial veloz y desaceleración fluida</span>
+            </div>
+            <div class="q1-track-lane">
+              <div class="q1-track-Shuttle">EASE-OUT</div>
+            </div>
+            <span class="q1-track-badge">0, 0, 0.58, 1</span>
+          </div>
+
+          <div class="q1-track-row q1-track-row--ease-in-out">
+            <div class="q1-track-meta">
+              <span class="q1-track-name">ease-in-out</span>
+              <span class="q1-track-sub">Curva simétrica de aceleración y frenado</span>
+            </div>
+            <div class="q1-track-lane">
+              <div class="q1-track-Shuttle">IN-OUT</div>
+            </div>
+            <span class="q1-track-badge">0.42, 0, 0.58, 1</span>
+          </div>
+
+          <div class="q1-track-row q1-track-row--bezier">
+            <div class="q1-track-meta">
+              <span class="q1-track-name">cubic-bezier(0.34, 1.56, 0.64, 1)</span>
+              <span class="q1-track-sub">Rebote elástico con +0.08s de transition-delay</span>
+            </div>
+            <div class="q1-track-lane">
+              <div class="q1-track-Shuttle">ELASTIC</div>
+            </div>
+            <span class="q1-track-badge">+0.08s DELAY</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parte 1B: 6 Módulos Tácticos de Microinteracción (:hover, :active, :focus-visible) -->
+      <h3 style="font-family:var(--font-display);font-size:1.35rem;margin-bottom:1.1rem;">
+        Consola de Módulos Tácticos (<code>:hover</code> · <code>:focus-visible</code> · <code>:active</code>)
+      </h3>
+
+      <div class="q1-modules-grid">
+        <!-- Módulo 01 -->
+        <button type="button" class="q1-module-card q1-module-card--reactor" data-mod-name="Módulo 01: Reactor de Ignición">
+          <div class="q1-mod-header">
+            <span class="q1-mod-code">MOD-01 // IGNICIÓN</span>
+            <span class="q1-mod-state-pill">IDLE</span>
+          </div>
+          <div class="q1-mod-visualizer" aria-hidden="true">
+            <div class="q1-reactor-ring"></div>
+            <div class="q1-reactor-core"></div>
+          </div>
+          <div>
+            <h4 class="q1-mod-title">Reactor de Ignición de Plasma</h4>
+            <p class="q1-mod-desc">
+              Expande el núcleo en <code>:hover</code> y <code>:focus-visible</code>; el anillo externo responde con <code>transition-delay: 0.08s</code>. Mantén presionado (<code>:active</code>) para comprimir el plasma.
+            </p>
+            <div class="q1-mod-css-spec">transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1)</div>
+          </div>
+        </button>
+
+        <!-- Módulo 02 -->
+        <button type="button" class="q1-module-card q1-module-card--cascade" data-mod-name="Módulo 02: Cascada Armónica">
+          <div class="q1-mod-header">
+            <span class="q1-mod-code">MOD-02 // DELAY WAVE</span>
+            <span class="q1-mod-state-pill">IDLE</span>
+          </div>
+          <div class="q1-mod-visualizer" aria-hidden="true">
+            <div class="q1-delay-equalizer">
+              <span class="q1-eq-bar"></span>
+              <span class="q1-eq-bar"></span>
+              <span class="q1-eq-bar"></span>
+              <span class="q1-eq-bar"></span>
+              <span class="q1-eq-bar"></span>
+              <span class="q1-eq-bar"></span>
+              <span class="q1-eq-bar"></span>
+              <span class="q1-eq-bar"></span>
+            </div>
+          </div>
+          <div>
+            <h4 class="q1-mod-title">Cascada Secuencial con Retardo</h4>
+            <p class="q1-mod-desc">
+              Ocho columnas con <code>transition-delay</code> escalonado de <code>0.00s</code> a <code>0.35s</code> crean una ola cinética al pasar el cursor o enfocar con teclado.
+            </p>
+            <div class="q1-mod-css-spec">transition-delay: 0.00s → 0.35s (pasos de 50ms)</div>
+          </div>
+        </button>
+
+        <!-- Módulo 03 -->
+        <button type="button" class="q1-module-card q1-module-card--scanner" data-mod-name="Módulo 03: Compuerta Óptica">
+          <div class="q1-mod-header">
+            <span class="q1-mod-code">MOD-03 // SHUTTER</span>
+            <span class="q1-mod-state-pill">IDLE</span>
+          </div>
+          <div class="q1-mod-visualizer" aria-hidden="true">
+            <div class="q1-scanner-shutterLeft"></div>
+            <div class="q1-scanner-shutterRight"></div>
+            <span class="q1-scanner-secret">ACCESO AUTORIZADO</span>
+          </div>
+          <div>
+            <h4 class="q1-mod-title">Compuerta Óptica de Dos Fases</h4>
+            <p class="q1-mod-desc">
+              Las compuertas laterales se abren primero (<code>0.55s</code>) y la telemetría interior emerge con un <code>transition-delay: 0.2s</code> sincronizado.
+            </p>
+            <div class="q1-mod-css-spec">cubic-bezier(0.76, 0, 0.24, 1) + delay 0.2s</div>
+          </div>
+        </button>
+
+        <!-- Módulo 04 -->
+        <button type="button" class="q1-module-card q1-module-card--morph" data-mod-name="Módulo 04: Cápsula Morfológica">
+          <div class="q1-mod-header">
+            <span class="q1-mod-code">MOD-04 // MORPHING</span>
+            <span class="q1-mod-state-pill">IDLE</span>
+          </div>
+          <div class="q1-mod-visualizer" aria-hidden="true">
+            <div class="q1-morph-pill">SYNTH</div>
+          </div>
+          <div>
+            <h4 class="q1-mod-title">Morfología Multipropiedad</h4>
+            <p class="q1-mod-desc">
+              Coordina simultáneamente <code>width</code>, <code>border-radius</code>, <code>letter-spacing</code> y <code>box-shadow</code> con duraciones independientes.
+            </p>
+            <div class="q1-mod-css-spec">transition: width 0.55s, letter-spacing 0.45s 0.1s</div>
+          </div>
+        </button>
+
+        <!-- Módulo 05 -->
+        <button type="button" class="q1-module-card q1-module-card--pressure" data-mod-name="Módulo 05: Sensor de Presión Háptica">
+          <div class="q1-mod-header">
+            <span class="q1-mod-code">MOD-05 // :ACTIVE FOCUS</span>
+            <span class="q1-mod-state-pill">IDLE</span>
+          </div>
+          <div class="q1-mod-visualizer" aria-hidden="true">
+            <div class="q1-pressure-meter">
+              <div class="q1-pressure-fill"></div>
+            </div>
+          </div>
+          <div>
+            <h4 class="q1-mod-title">Sensor de Presión Multi-Estado</h4>
+            <p class="q1-mod-desc">
+              Alcanza 65% en <code>:hover</code>, 78% esmeralda en <code>:focus-visible</code> (Tab) y 100% sobrecarga ámbar al mantener presionado (<code>:active</code>).
+            </p>
+            <div class="q1-mod-css-spec">:hover (65%) | :focus-visible (78%) | :active (100%)</div>
+          </div>
+        </button>
+
+        <!-- Módulo 06 -->
+        <button type="button" class="q1-module-card q1-module-card--chroma" data-mod-name="Módulo 06: Prisma de Desfasaje">
+          <div class="q1-mod-header">
+            <span class="q1-mod-code">MOD-06 // PRISM SPLIT</span>
+            <span class="q1-mod-state-pill">IDLE</span>
+          </div>
+          <div class="q1-mod-visualizer" aria-hidden="true">
+            <div class="q1-chroma-stack">
+              <div class="q1-chroma-layer q1-chroma-layer--cyan"></div>
+              <div class="q1-chroma-layer q1-chroma-layer--violet"></div>
+              <div class="q1-chroma-layer q1-chroma-layer--rose"></div>
+            </div>
+          </div>
+          <div>
+            <h4 class="q1-mod-title">Prisma de Desfasaje Espectral</h4>
+            <p class="q1-mod-desc">
+              Separa tres planos espectrales con retardos escalonados (<code>0s</code>, <code>0.08s</code> y <code>0.16s</code>) produciendo profundidad óptica inmediata.
+            </p>
+            <div class="q1-mod-css-spec">transition-property: transform, opacity (staggered)</div>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         VISTA 02: PREGUNTA 2 — GALERÍA DE TRANSFORMACIONES CSS 2D Y 3D
+         =================================================================== -->
+    <section id="pregunta-2" class="view-section" aria-labelledby="q2-main-title">
+      <div class="section-topbar">
+        <button type="button" class="back-hub-btn" data-target="hub">
+          <span>← Volver al Menú Principal</span>
+        </button>
+        <div class="section-step-nav">
+          <button type="button" class="step-btn" data-target="pregunta-1">← 01 Transiciones</button>
+          <button type="button" class="step-btn" data-target="pregunta-3">Siguiente: 03 Universo Animado →</button>
+        </div>
+      </div>
+
+      <div class="rubric-banner">
+        <div class="rubric-banner-title">[RÚBRICA PREGUNTA 2] — ARCHIVO: css/pregunta2-transformaciones.css</div>
+        <p style="font-size:0.86rem;color:var(--text-secondary);">
+          Demuestra <code>translate()</code>, <code>scale()</code>, <code>rotate()</code>, <code>skew()</code>, <code>perspective</code>, <code>rotateX()</code>, <code>rotateY()</code>, <code>transform-origin</code> y transiciones suaves entre estados tanto en el laboratorio interactivo como en las 6 reliquias de la galería.
+        </p>
+      </div>
+
+      <div class="section-hero-header">
+        <div class="eyebrow-badge">
+          <span class="eyebrow-pulse"></span>
+          <span>EXPERIENCIA 02 // PREGUNTA 2 — GEOMETRÍA ESPACIAL 2D Y 3D</span>
+        </div>
+        <h2 id="q2-main-title" class="section-hero-title">02 — Galería de Transformaciones</h2>
+        <p class="section-hero-subtitle">
+          Explora el archivo de reliquias dimensionales de Aetheria y experimenta en el banco de pruebas cómo la perspectiva 3D, los ejes de rotación y el punto de anclaje (<code>transform-origin</code>) modifican el comportamiento espacial de cada objeto.
+        </p>
+      </div>
+
+      <!-- Parte 2A: Banco de Pruebas Interactivo de Transformaciones + transform-origin -->
+      <div class="q2-sandbox-panel" role="region" aria-label="Laboratorio interactivo de transformaciones y punto de origen">
+        <div class="q2-sandbox-stage-wrap">
+          <div id="q2-sandbox-specimen" class="q2-sandbox-specimen">
+            <div id="q2-origin-pin" class="q2-origin-pin" title="Punto de anclaje transform-origin"></div>
+            <div class="q2-specimen-inner-ring">3D MATRIX</div>
+          </div>
+        </div>
+
+        <div class="q2-sandbox-controls">
+          <h3 style="font-family:var(--font-display);font-size:1.3rem;">
+             Simulador de Matriz 2D/3D y Punto de Anclaje (<code>transform-origin</code>)
+          </h3>
+          <p style="font-size:0.88rem;color:var(--text-secondary);">
+            El punto rosado indica la coordenada exacta de <code>transform-origin</code>. Cambia el anclaje y aplica distintas combinaciones de transformación para observar cómo varía el pivote.
+          </p>
+
+          <div>
+            <span class="q1-control-label" style="display:block;margin-bottom:0.45rem;">1. Aplicar Transformación Combinada:</span>
+            <div class="q2-preset-buttons">
+              <button type="button" class="q1-chip-btn" data-q2-preset="reset">Estado Base (0)</button>
+              <button type="button" class="q1-chip-btn is-selected" data-q2-preset="3d-tilt">Perspectiva + rotateX/Y</button>
+              <button type="button" class="q1-chip-btn" data-q2-preset="skew-slash">skew(-16deg, 4deg) + translate</button>
+              <button type="button" class="q1-chip-btn" data-q2-preset="orbit-spin">scale(1.18) + rotate(135deg)</button>
+              <button type="button" class="q1-chip-btn" data-q2-preset="hyper-combo">Matriz Completa 2D+3D</button>
+            </div>
+          </div>
+
+          <div>
+            <span class="q1-control-label" style="display:block;margin-bottom:0.45rem;">2. Cambiar Punto de Anclaje (<code>transform-origin</code>):</span>
+            <div class="q2-origin-buttons">
+              <button type="button" class="q1-chip-btn is-selected" data-q2-origin="50% 50%" data-pin-x="50%" data-pin-y="50%">center (50% 50%)</button>
+              <button type="button" class="q1-chip-btn" data-q2-origin="0% 0%" data-pin-x="0%" data-pin-y="0%">top left (0% 0%)</button>
+              <button type="button" class="q1-chip-btn" data-q2-origin="100% 0%" data-pin-x="100%" data-pin-y="0%">top right (100% 0%)</button>
+              <button type="button" class="q1-chip-btn" data-q2-origin="0% 100%" data-pin-x="0%" data-pin-y="100%">bottom left (0% 100%)</button>
+              <button type="button" class="q1-chip-btn" data-q2-origin="100% 100%" data-pin-x="100%" data-pin-y="100%">bottom right (100% 100%)</button>
+            </div>
+          </div>
+
+          <div id="q2-live-css" class="q2-code-readout">
+            transform-origin: 50% 50%; transform: perspective(900px) translate(0px, -10px) scale(1.08) rotateX(28deg) rotateY(-32deg);
+          </div>
+        </div>
+      </div>
+
+      <!-- Parte 2B: Catálogo de 6 Reliquias Cósmicas -->
+      <div class="q2-gallery-grid">
+        <!-- Reliquia 01: Chronos Astrolabe -->
+        <article class="q2-card-perspective q2-card-perspective--chronos" tabindex="0">
+          <div class="q2-relic-card">
+            <div class="q2-relic-header">
+              <span class="q2-relic-id">RELIQUIA 01 // 3D TILT</span>
+              <span class="q2-relic-origin-tag">perspective: 1100px</span>
+            </div>
+            <div class="q2-relic-stage">
+              <img src="./assets/artifact-chronos.svg" alt="Astrolabio de Chronos" class="q2-relic-art" width="132" height="132" />
+            </div>
+            <div class="q2-relic-body">
+              <h3 class="q2-relic-title">Astrolabio de Chronos</h3>
+              <p class="q2-relic-desc">
+                Inclina el plano completo mediante <code>rotateX(14deg)</code> y <code>rotateY(-16deg)</code> mientras el astrolabio emerge en profundidad con <code>translateZ(55px)</code> y <code>scale(1.18)</code>.
+              </p>
+              <div class="q2-relic-formula">rotateX(14deg) rotateY(-16deg) translateZ(55px)</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Reliquia 02: Valkyrie Hyper-Blade -->
+        <article class="q2-card-perspective q2-card-perspective--valkyrie" tabindex="0">
+          <div class="q2-relic-card">
+            <div class="q2-relic-header">
+              <span class="q2-relic-id">RELIQUIA 02 // SKEW VECTOR</span>
+              <span class="q2-relic-origin-tag">skew(-14deg, 4deg)</span>
+            </div>
+            <div class="q2-relic-stage">
+              <img src="./assets/artifact-valkyrie.svg" alt="Cuchilla Hiper-Valkiria" class="q2-relic-art" width="132" height="132" />
+              <div class="q2-speed-streak" aria-hidden="true"></div>
+            </div>
+            <div class="q2-relic-body">
+              <h3 class="q2-relic-title">Lanza Supersónica Valkiria</h3>
+              <p class="q2-relic-desc">
+                Aplica <code>skew(-14deg, 4deg)</code> combinado con <code>translate(12px, -10px)</code> y <code>scale(1.22)</code> sobre el vector energético para transmitir impulso aerodinámico sin distorsionar el texto.
+              </p>
+              <div class="q2-relic-formula">translate(12px, -10px) skew(-14deg, 4deg) scale(1.22)</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Reliquia 03: Nebula Cortex -->
+        <article class="q2-card-perspective q2-card-perspective--nebula" tabindex="0">
+          <div class="q2-relic-card">
+            <div class="q2-relic-header">
+              <span class="q2-relic-id">RELIQUIA 03 // ROTACIÓN</span>
+              <span class="q2-relic-origin-tag">rotate(-120deg)</span>
+            </div>
+            <div class="q2-relic-stage">
+              <img src="./assets/artifact-nebula.svg" alt="Córtex de la Nebulosa" class="q2-relic-art" width="132" height="132" />
+            </div>
+            <div class="q2-relic-body">
+              <h3 class="q2-relic-title">Córtex Sináptico Nebula</h3>
+              <p class="q2-relic-desc">
+                Sincroniza una rotación orbital de <code>rotate(-120deg)</code> con expansión <code>scale(1.24)</code> y elevación <code>translate(0, -10px)</code> sobre una matriz neuronal hexagonal.
+              </p>
+              <div class="q2-relic-formula">translate(0, -8px) rotate(-120deg) scale(1.24)</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Reliquia 04: Aegis Monolith -->
+        <article class="q2-card-perspective q2-card-perspective--aegis" tabindex="0">
+          <div class="q2-relic-card">
+            <div class="q2-relic-header">
+              <span class="q2-relic-id">RELIQUIA 04 // TRANSFORM-ORIGIN</span>
+              <span class="q2-relic-origin-tag">left / right / bottom</span>
+            </div>
+            <div class="q2-relic-stage">
+              <div class="q2-aegis-wing q2-aegis-wing--left" aria-hidden="true"></div>
+              <div class="q2-aegis-wing q2-aegis-wing--right" aria-hidden="true"></div>
+              <img src="./assets/artifact-aegis.svg" alt="Monolito Aegis" class="q2-relic-art" width="132" height="132" />
+            </div>
+            <div class="q2-relic-body">
+              <h3 class="q2-relic-title">Monolito Blindado Aegis</h3>
+              <p class="q2-relic-desc">
+                Las compuertas de blindaje rotan desde sus bisagras exteriores usando <code>transform-origin: left center</code> y <code>right center</code> mientras el núcleo escala desde <code>center bottom</code>.
+              </p>
+              <div class="q2-relic-formula">transform-origin: left center | right center</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Reliquia 05: Solaris Core (Volteo 3D 180deg) -->
+        <article id="q2-solaris-card" class="q2-card-perspective q2-card-perspective--solaris" tabindex="0">
+          <div class="q2-relic-card q2-relic-card--flip">
+            <!-- Cara Frontal -->
+            <div class="q2-flip-face q2-flip-face--front">
+              <div class="q2-relic-header">
+                <span class="q2-relic-id" style="border-color:var(--accent-amber);color:#fde68a;">RELIQUIA 05 // FLIP 3D 180°</span>
+                <span class="q2-relic-origin-tag">rotateY(180deg)</span>
+              </div>
+              <div class="q2-relic-stage">
+                <img src="./assets/artifact-solaris.svg" alt="Esfera de Contención Solaris" class="q2-relic-art" width="132" height="132" />
+              </div>
+              <div class="q2-relic-body">
+                <h3 class="q2-relic-title">Esfera Estelar Solaris</h3>
+                <p class="q2-relic-desc">
+                  Pasa el cursor o pulsa el botón inferior para ejecutar un giro tridimensional completo <code>rotateY(180deg)</code> con <code>backface-visibility: hidden</code>.
+                </p>
+                <button type="button" class="q2-flip-btn">Voltear Reliquia 180° ↻</button>
+              </div>
+            </div>
+
+            <!-- Cara Posterior (Blueprint Técnico) -->
+            <div class="q2-flip-face q2-flip-face--back">
+              <div class="q2-relic-header">
+                <span class="q2-relic-id" style="border-color:var(--accent-amber);color:#fde68a;">REVERSO // TELEMETRÍA 3D</span>
+                <span class="q2-relic-origin-tag">CARA OCULTA</span>
+              </div>
+              <div style="margin:auto 0;padding:1rem;border-radius:12px;background:rgba(4,7,17,0.85);border:1px solid rgba(245,158,11,0.4);">
+                <h4 style="font-family:var(--font-display);color:#fde68a;margin-bottom:0.5rem;">Especificación de Volteo Espacial</h4>
+                <p style="font-size:0.84rem;color:var(--text-secondary);margin-bottom:0.75rem;">
+                  Ambas caras comparten un contenedor con <code>transform-style: preserve-3d</code> y <code>perspective: 1100px</code>. La cara posterior está pre-rotada a <code>rotateY(180deg)</code>.
+                </p>
+                <div class="q2-relic-formula" style="color:#fde68a;">
+                  transform-style: preserve-3d;<br />
+                  backface-visibility: hidden;<br />
+                  transform: rotateY(180deg);
+                </div>
+              </div>
+              <button type="button" class="q2-flip-btn">Regresar al Frente ↺</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Reliquia 06: Hyperion Vortex -->
+        <article class="q2-card-perspective q2-card-perspective--hyperion" tabindex="0">
+          <div class="q2-relic-card">
+            <div class="q2-relic-header">
+              <span class="q2-relic-id">RELIQUIA 06 // MATRIZ TOTAL</span>
+              <span class="q2-relic-origin-tag">2D + 3D COMBINADO</span>
+            </div>
+            <div class="q2-relic-stage">
+              <img src="./assets/artifact-hyperion.svg" alt="Teseracto Hyperion" class="q2-relic-art" width="132" height="132" />
+            </div>
+            <div class="q2-relic-body">
+              <h3 class="q2-relic-title">Teseracto Dimensional Hyperion</h3>
+              <p class="q2-relic-desc">
+                Síntesis de todas las primitivas: traslación espacial, rotación en 3 ejes, escalado y sesgado sutil sobre un hiper-cubo proyectado.
+              </p>
+              <div class="q2-relic-formula">translateZ(48px) rotate(35deg) skew(-6deg, 3deg) scale(1.22)</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         VISTA 03: PREGUNTA 3 — UNIVERSO ANIMADO AUTÓNOMO (@keyframes)
+         =================================================================== -->
+    <section id="pregunta-3" class="view-section" aria-labelledby="q3-main-title">
+      <div class="section-topbar">
+        <button type="button" class="back-hub-btn" data-target="hub">
+          <span>← Volver al Menú Principal</span>
+        </button>
+        <div class="section-step-nav">
+          <button type="button" class="step-btn" data-target="pregunta-2">← 02 Transformaciones</button>
+          <button type="button" class="step-btn" data-target="pregunta-4">Siguiente: 04 Compatibilidad CSS →</button>
+        </div>
+      </div>
+
+      <div class="rubric-banner">
+        <div class="rubric-banner-title">[RÚBRICA PREGUNTA 3] — ARCHIVO: css/pregunta3-animaciones.css</div>
+        <p style="font-size:0.86rem;color:var(--text-secondary);">
+          Escena 100% autónoma construida en puro CSS (sin GIF ni video) utilizando 14 reglas <code>@keyframes</code> coordinadas con <code>animation</code>, <code>animation-duration</code>, <code>animation-delay</code>, <code>animation-iteration-count</code>, <code>animation-direction</code> (<code>normal</code>, <code>reverse</code>, <code>alternate</code>, <code>alternate-reverse</code>) y <code>animation-timing-function</code>.
+        </p>
+      </div>
+
+      <div class="section-hero-header">
+        <div class="eyebrow-badge">
+          <span class="eyebrow-pulse"></span>
+          <span>EXPERIENCIA 03 // PREGUNTA 3 — ECOSISTEMA CINÉTICO AUTÓNOMO</span>
+        </div>
+        <h2 id="q3-main-title" class="section-hero-title">03 — Universo Animado</h2>
+        <p class="section-hero-subtitle">
+          Observatorio Astral y Esfera de Contención Dyson en ejecución continua y automática mediante animaciones CSS multicapa.
+        </p>
+      </div>
+
+      <!-- Barra de Estado y Controles de Observación -->
+      <div class="q3-observatory-hud">
+        <div class="q3-hud-status">
+          <span class="q3-live-beacon" aria-hidden="true"></span>
+          <span id="q3-state-label">EJECUCIÓN AUTÓNOMA ACTIVA (14 @keyframes en paralelo)</span>
+        </div>
+
+        <div class="q1-control-group">
+          <span class="q1-control-label">Escala Temporal:</span>
+          <button type="button" class="q1-chip-btn" data-q3-speed="0.5">0.5x Cámara Lenta</button>
+          <button type="button" class="q1-chip-btn is-selected" data-q3-speed="1">1.0x Normal</button>
+          <button type="button" class="q1-chip-btn" data-q3-speed="2.2">2.2x Hipervelocidad</button>
+          <button type="button" id="q3-play-pause" class="q1-chip-btn" aria-pressed="false">Pausar Animaciones CSS</button>
+        </div>
+      </div>
+
+      <!-- ESCENARIO ANIMADO AUTÓNOMO EN PURO CSS -->
+      <div class="q3-cosmos-theater" role="img" aria-label="Escena espacial animada en CSS puro: Esfera de Dyson central con anillos giroscópicos, planetas y lunas orbitando, cometas cruzando el espacio, ondas de choque y monolitos levitando sobre un horizonte cibernético.">
+        <!-- 1. Nebulosas Dinámicas -->
+        <div class="q3-nebula-cloud q3-nebula-cloud--cyan"></div>
+        <div class="q3-nebula-cloud q3-nebula-cloud--magenta"></div>
+
+        <!-- 2. Campo Estelar con Retardo Escalonado -->
+        <div class="q3-starfield">
+          <span class="q3-star q3-star--1"></span>
+          <span class="q3-star q3-star--2"></span>
+          <span class="q3-star q3-star--3"></span>
+          <span class="q3-star q3-star--4"></span>
+          <span class="q3-star q3-star--5"></span>
+          <span class="q3-star q3-star--6"></span>
+          <span class="q3-star q3-star--7"></span>
+          <span class="q3-star q3-star--8"></span>
+          <span class="q3-star q3-star--9"></span>
+          <span class="q3-star q3-star--10"></span>
+        </div>
+
+        <!-- 3. Cometas Supersónicos -->
+        <div class="q3-comet q3-comet--1"></div>
+        <div class="q3-comet q3-comet--2"></div>
+
+        <!-- 4. Sistema Central: Esfera de Dyson + Planetas en Órbita -->
+        <div class="q3-dyson-system">
+          <div class="q3-quantum-beam"></div>
+
+          <!-- Ondas de Choque Concéntricas -->
+          <div class="q3-shockwave q3-shockwave--1"></div>
+          <div class="q3-shockwave q3-shockwave--2"></div>
+          <div class="q3-shockwave q3-shockwave--3"></div>
+
+          <!-- Órbita Planetaria Exterior (Planeta Aetheria + Luna) -->
+          <div class="q3-orbit-track q3-orbit-track--planet">
+            <div class="q3-planet-aetheria">
+              <div class="q3-moon-orbit">
+                <div class="q3-moon-node"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Órbita Inversa de la Sonda Vanguard-IX -->
+          <div class="q3-orbit-track q3-orbit-track--vessel">
+            <div class="q3-vessel-node"></div>
+          </div>
+
+          <!-- Tres Anillos Giroscópicos 3D -->
+          <div class="q3-dyson-ring q3-dyson-ring--outer"></div>
+          <div class="q3-dyson-ring q3-dyson-ring--middle"></div>
+          <div class="q3-dyson-ring q3-dyson-ring--inner"></div>
+
+          <!-- Estrella / Núcleo de Singularidad -->
+          <div class="q3-singularity-core"></div>
+        </div>
+
+        <!-- 5. Monolitos de Cristal Levitantes -->
+        <div class="q3-floating-monolith q3-floating-monolith--1"></div>
+        <div class="q3-floating-monolith q3-floating-monolith--2"></div>
+        <div class="q3-floating-monolith q3-floating-monolith--3"></div>
+        <div class="q3-floating-monolith q3-floating-monolith--4"></div>
+
+        <!-- 6. Horizonte Cibernético en Perspectiva -->
+        <div class="q3-cyber-horizon"></div>
+
+        <!-- 7. Radar Esquinero -->
+        <div class="q3-radar-widget">
+          <div class="q3-radar-sweep"></div>
+        </div>
+
+        <div class="q3-theater-caption">
+          OBSERVATORIO DYSON-IX // 100% CSS @keyframes · Sin video ni GIF
+        </div>
+      </div>
+
+      <!-- Matriz Técnica de Propiedades de Animación Utilizadas -->
+      <div class="q3-telemetry-grid">
+        <div class="q3-anim-spec-card">
+          <div class="q3-anim-spec-name">@keyframes q3DysonRingOuter / Middle</div>
+          <ul class="q3-anim-spec-list">
+            <li>animation-duration: 26s / 16s</li>
+            <li>animation-direction: normal / reverse</li>
+            <li>animation-timing-function: linear</li>
+            <li>animation-iteration-count: infinite</li>
+          </ul>
+        </div>
+
+        <div class="q3-anim-spec-card">
+          <div class="q3-anim-spec-name">@keyframes q3DysonRingInner</div>
+          <ul class="q3-anim-spec-list">
+            <li>animation-duration: 9s</li>
+            <li>animation-direction: alternate-reverse</li>
+            <li>animation-timing-function: ease-in-out</li>
+            <li>animation-iteration-count: infinite</li>
+          </ul>
+        </div>
+
+        <div class="q3-anim-spec-card">
+          <div class="q3-anim-spec-name">@keyframes q3ShockwaveExpand</div>
+          <ul class="q3-anim-spec-list">
+            <li>animation-duration: 4.2s</li>
+            <li>animation-delay: 0s, -1.4s, -2.8s</li>
+            <li>animation-timing-function: ease-out</li>
+            <li>animation-iteration-count: infinite</li>
+          </ul>
+        </div>
+
+        <div class="q3-anim-spec-card">
+          <div class="q3-anim-spec-name">@keyframes q3CometPass &amp; Strobe</div>
+          <ul class="q3-anim-spec-list">
+            <li>animation-delay: 0.6s y 3.8s</li>
+            <li>timing: cubic-bezier(0.16, 1, 0.3, 1)</li>
+            <li>faro: steps(2, start) infinite</li>
+            <li>monolitos: alternate + delays escalonados</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         VISTA 04: PREGUNTA 4 — CSS MODERNO Y COMPATIBILIDAD PROGRESIVA
+         =================================================================== -->
+    <section id="pregunta-4" class="view-section" aria-labelledby="q4-main-title">
+      <div class="section-topbar">
+        <button type="button" class="back-hub-btn" data-target="hub">
+          <span>← Volver al Menú Principal</span>
+        </button>
+        <div class="section-step-nav">
+          <button type="button" class="step-btn" data-target="pregunta-3">← 03 Universo Animado</button>
+          <button type="button" class="step-btn" data-target="hub">Finalizar en el Hub Principal ↺</button>
+        </div>
+      </div>
+
+      <div class="rubric-banner">
+        <div class="rubric-banner-title">[RÚBRICA PREGUNTA 4] — ARCHIVOS: css/pregunta4-compatibilidad.css Y compatibilidad.txt</div>
+        <p style="font-size:0.86rem;color:var(--text-secondary);">
+          Incluye: (1) Reglas <code>@supports</code> con versión base funcional y mejora moderna; (2) Cuatro propiedades con valores de reserva (fallback) y prefijos de proveedor con el estándar al final; (3) Bloque <code>@media (prefers-reduced-motion: reduce)</code>; y (4) Tabla documentada de pruebas en dos navegadores con referencias a MDN y Can I Use.
+        </p>
+      </div>
+
+      <div class="section-hero-header">
+        <div class="eyebrow-badge">
+          <span class="eyebrow-pulse"></span>
+          <span>EXPERIENCIA 04 // PREGUNTA 4 — INGENIERÍA DE COMPATIBILIDAD Y ACCESIBILIDAD</span>
+        </div>
+        <h2 id="q4-main-title" class="section-hero-title">04 — CSS Moderno y Compatibilidad</h2>
+        <p class="section-hero-subtitle">
+          Arquitectura de mejora progresiva que garantiza que la interfaz sea siempre legible y funcional en motores antiguos (versión base) mientras despliega efectos avanzados de cristal, mezcla de color perceptual y selectores relacionales cuando el navegador los soporta.
+        </p>
+      </div>
+
+      <!-- Barra Simuladora de Estados de Compatibilidad -->
+      <div class="q4-simulator-bar" role="region" aria-label="Simulador de estados de compatibilidad en vivo">
+        <div>
+          <span id="q4-active-mode-readout" style="font-family:var(--font-mono);font-size:0.84rem;color:var(--accent-teal);font-weight:700;">
+            Modo Activo: Mejora Progresiva @supports Completa
+          </span>
+          <p style="font-size:0.82rem;color:var(--text-secondary);">
+            Compara en vivo cómo se ve el componente con soporte moderno vs. su versión base de reserva o con movimiento reducido:
+          </p>
+        </div>
+
+        <div class="q4-sim-buttons">
+          <button type="button" class="q1-chip-btn is-selected" data-q4-mode="modern">1. Mejora Moderna (@supports)</button>
+          <button type="button" class="q1-chip-btn" data-q4-mode="fallback">2. Versión Base (Reserva sin @supports)</button>
+          <button type="button" class="q1-chip-btn" data-q4-mode="reduced">3. @media (prefers-reduced-motion: reduce)</button>
+        </div>
+      </div>
+
+      <!-- COMPONENTE PRINCIPAL: QUANTUM GLASS OS DASHBOARD -->
+      <div id="q4-quantum-dashboard" class="q4-quantum-dashboard">
+        <!-- Orbes ambientales detrás del cristal para apreciar el desenfoque de backdrop-filter -->
+        <div class="q4-ambient-orb q4-ambient-orb--teal" aria-hidden="true"></div>
+        <div class="q4-ambient-orb q4-ambient-orb--violet" aria-hidden="true"></div>
+
+        <div class="q4-dashboard-top">
+          <div>
+            <span class="q4-status-chip">✓ SISTEMA DE MEJORA PROGRESIVA VERIFICADO</span>
+            <h3 class="q4-gradient-headline" style="margin-top:0.65rem;">
+              QUANTUM GLASS OS // NODO DE COMPATIBILIDAD
+            </h3>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:0.76rem;color:var(--text-secondary);text-align:right;">
+            <div>REFERENCIAS: MDN WEB DOCS &amp; CAN I USE</div>
+            <div style="color:var(--accent-cyan);">MOTORES: BLINK (CHROME/EDGE) vs. GECKO (FIREFOX)</div>
+          </div>
+        </div>
+
+        <div class="q4-cards-grid">
+          <!-- Tarjeta 1: @supports (Base + Mejora Moderna) -->
+          <article class="q4-glass-card">
+            <div class="q4-card-kicker">REQUISITO 01 // DETECCIÓN DE CARACTERÍSTICAS</div>
+            <h4 class="q4-card-title">Regla <code>@supports</code> (Base + Mejora)</h4>
+            <p class="q4-card-text">
+              Define primero un panel opaco de alto contraste (<code>rgba(11, 17, 32, 0.95)</code>) 100% legible. Si el navegador soporta desenfoque de fondo o mezcla <code>color-mix(in oklch, ...)</code>, activa el cristal traslúcido.
+            </p>
+            <pre class="q4-code-snippet"><code>/* Base funcional segura */
+.q4-quantum-dashboard {
+  background-color: #0b1120;
+  background-color: rgba(11, 17, 32, 0.95);
+}
+/* Mejora progresiva */
+@supports ((-webkit-backdrop-filter: blur(22px))
+           or (backdrop-filter: blur(22px))) {
+  .q4-quantum-dashboard {
+    background-color: rgba(11, 17, 32, 0.56);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+  }
+}</code></pre>
+          </article>
+
+          <!-- Tarjeta 2: Valores de Reserva (Fallback) y Prefijos Ordenados -->
+          <article class="q4-glass-card">
+            <div class="q4-card-kicker">REQUISITO 02 // RESERVAS Y PREFIJOS</div>
+            <h4 class="q4-card-title">Fallbacks y Prefijos con Estándar al Final</h4>
+            <p class="q4-card-text">
+              Implementa colores de reserva antes de gradientes de texto o <code>oklch()</code>, y prefijos <code>-webkit-</code> / <code>-moz-</code> seguidos siempre por la propiedad estándar al final.
+            </p>
+            <div class="q4-masked-telemetry-stream">
+              <div>[OK] color: #38bdf8; (Fallback sólido legible)</div>
+              <div>[OK] -webkit-background-clip: text;</div>
+              <div>[OK] background-clip: text; (Estándar al final)</div>
+              <div>[OK] -webkit-mask-image: linear-gradient(...);</div>
+              <div>[OK] mask-image: linear-gradient(...); (Estándar final)</div>
+            </div>
+          </article>
+
+          <!-- Tarjeta 3: @media (prefers-reduced-motion: reduce) -->
+          <article class="q4-glass-card">
+            <div class="q4-card-kicker">REQUISITO 03 // ACCESIBILIDAD VESTIBULAR</div>
+            <h4 class="q4-card-title"><code>@media (prefers-reduced-motion: reduce)</code></h4>
+            <p class="q4-card-text">
+              Respeta la preferencia de reducción de movimiento del sistema operativo deteniendo los bucles <code>@keyframes</code> y reduciendo <code>transition-duration</code> a <code>0.01ms</code> sin perder claridad ni foco.
+            </p>
+            <pre class="q4-code-snippet"><code>@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}</code></pre>
+            <div class="q4-kinetic-indicator">
+              <div class="q4-spinner-ring" aria-hidden="true"></div>
+              <span style="font-family:var(--font-mono);font-size:0.75rem;color:#a7f3d0;">
+                Indicador cinético (se detiene con Reduced Motion)
+              </span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- REQUISITO 04: Tabla Comparativa de Pruebas en Dos Navegadores y Fuentes -->
+      <div class="q4-compat-table-wrap">
+        <h3 style="font-family:var(--font-display);font-size:1.35rem;margin-bottom:0.4rem;">
+          Matriz de Pruebas en Dos Navegadores y Fuentes Técnicas (MDN &amp; Can I Use)
+        </h3>
+        <p style="font-size:0.88rem;color:var(--text-secondary);margin-bottom:1.2rem;">
+          Esta tabla también se encuentra documentada en el archivo raíz <code>compatibilidad.txt</code> y en los comentarios técnicos de <code>css/pregunta4-compatibilidad.css</code>.
+        </p>
+
+        <table class="q4-compat-table">
+          <thead>
+            <tr>
+              <th>Propiedad / Regla CSS Implementada</th>
+              <th>Navegador 1: Chrome / Edge (Blink)</th>
+              <th>Navegador 2: Mozilla Firefox (Gecko)</th>
+              <th>Qué funciona igual, qué cambia y comportamiento de reserva</th>
+              <th>Fuentes Consultadas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>1. <code>@supports (backdrop-filter)</code> + Base <code>rgba()</code></strong>
+              </td>
+              <td>
+                Soportado (Chrome 76+ / Edge 79+). Activa el cristal traslúcido con <code>blur(24px) saturate(175%)</code>.
+              </td>
+              <td>
+                Soportado (Firefox 103+). Activa el mismo desenfoque de cristal sobre los orbes luminosos.
+              </td>
+              <td>
+                <strong>Funciona igual:</strong> Ambos motores modernos aplican la mejora <code>@supports</code>. <strong>Qué cambia sin soporte:</strong> En navegadores antiguos (o al activar el botón "Versión Base"), se mantiene el fondo opaco <code>#0b1120</code> / <code>rgba(11,17,32,0.95)</code> con contraste AAA.
+              </td>
+              <td>
+                MDN: <code>@supports</code> y <code>backdrop-filter</code><br />
+                Can I Use: <code>css-featurequeries</code>, <code>css-backdrop-filter</code>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>2. Prefijos + Estándar al final:<br /><code>-webkit-backdrop-filter</code> → <code>backdrop-filter</code> y <code>-webkit-mask-image</code> → <code>mask-image</code></strong>
+              </td>
+              <td>
+                Reconoce ambos; ejecuta la propiedad estándar ubicada al final (sin prefijo desde Chrome 120).
+              </td>
+              <td>
+                Ignora el prefijo <code>-webkit-</code> sin error y aplica la propiedad estándar <code>backdrop-filter</code> y <code>mask-image</code> final.
+              </td>
+              <td>
+                <strong>Funciona igual:</strong> En ambos prevalece la declaración estándar final. <strong>Qué cambia entre motores:</strong> Chrome &lt; 120 y Safari iOS &lt; 18 requieren el prefijo <code>-webkit-</code> previo; colocarlo antes del estándar garantiza compatibilidad cruzada.
+              </td>
+              <td>
+                MDN: <code>mask-image</code>, <code>Vendor Prefix</code><br />
+                Can I Use: <code>css-masks</code>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>3. Valor de Reserva (Fallback) en Texto:<br /><code>color: #38bdf8</code> + <code>-webkit-background-clip: text</code> + <code>background-clip: text</code></strong>
+              </td>
+              <td>
+                Muestra el texto con gradiente tricolor recortado a los glifos tipográficos.
+              </td>
+              <td>
+                Muestra el mismo gradiente tipográfico (soporta tanto el prefijo <code>-webkit-</code> como el estándar).
+              </td>
+              <td>
+                <strong>Funciona igual:</strong> El recorte de gradiente en texto opera igual en ambos navegadores. <strong>Qué cambia en modo reserva:</strong> Si falla el recorte, el título conserva el color sólido <code>#38bdf8</code> legible en lugar de quedar transparente.
+              </td>
+              <td>
+                MDN: <code>background-clip</code><br />
+                Can I Use: <code>background-clip-text</code>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>4. Cascada de Color y <code>@supports (color-mix(in oklch, ...))</code></strong>
+              </td>
+              <td>
+                Soportado (v111+). Procesa <code>oklch()</code> y <code>color-mix()</code> en insignias y estado <code>:hover</code>.
+              </td>
+              <td>
+                Soportado (v113+). Procesa <code>oklch()</code> y <code>color-mix()</code> con idéntica interpolación cromática.
+              </td>
+              <td>
+                <strong>Funciona igual:</strong> Ambos aplican la última declaración <code>oklch()</code>. <strong>Qué cambia en versiones antiguas:</strong> Ignoran <code>oklch()</code> y utilizan automáticamente la reserva previa <code>#064e3b</code> / <code>rgba()</code> declarada antes.
+              </td>
+              <td>
+                MDN: <code>color_value/oklch</code>, <code>color-mix()</code><br />
+                Can I Use: <code>css-color-function</code>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>5. <code>@media (prefers-reduced-motion: reduce)</code></strong>
+              </td>
+              <td>
+                Soportado (v74+). Detiene los <code>@keyframes</code> y reduce <code>transition-duration</code> a <code>0.01ms</code>.
+              </td>
+              <td>
+                Soportado (v63+). Detiene inmediatamente los giros y desplazamientos al activarse en el SO.
+              </td>
+              <td>
+                <strong>Funciona igual:</strong> Ambos respetan la preferencia vestibular del usuario. <strong>Qué cambia visualmente:</strong> Los elementos permanecen estáticos y legibles sin pérdida de contenido ni de foco de teclado.
+              </td>
+              <td>
+                MDN: <code>@media/prefers-reduced-motion</code><br />
+                Can I Use: <code>prefers-reduced-motion</code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Pie de Página Global -->
+  <footer class="app-footer" role="contentinfo">
+    <div>
+      <strong>CSS MOTION LAB</strong> — Evaluación Universitaria de CSS Avanzado · HTML5 + CSS3 + Vanilla JS (100% Estático para GitHub Pages)
+    </div>
+    <div>
+      Atajo rápido: <span class="footer-kbd">Esc</span> regresar al Menú Principal · <span class="footer-kbd">Tab</span> navegar con foco visible
+    </div>
+  </footer>
+
+  <!-- Script Principal con ruta relativa -->
+  <script src="./js/app.js"></script>
+</body>
+</html>
